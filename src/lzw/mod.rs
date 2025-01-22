@@ -8,7 +8,7 @@ use std::cmp::Ordering;
 #[cfg(test)]
 mod test;
 
-struct LZWCompressor{}
+pub struct LZWCompressor{}
 
 impl LZWCompressor {
     pub fn new() -> Self {
