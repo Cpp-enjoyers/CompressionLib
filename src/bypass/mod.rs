@@ -5,10 +5,10 @@ use crate::Compressor;
 #[cfg(test)]
 mod test;
 
-struct BypassCompressor{}
+pub struct BypassCompressor{}
 
 impl BypassCompressor {
-    fn new() -> Self {
+    pub fn new() -> Self {
         Self {  }
     }
 }
