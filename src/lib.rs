@@ -1,7 +1,7 @@
 #![allow(dead_code)]
 
-pub mod lzw;
 pub mod bypass;
+pub mod lzw;
 
 pub trait Compressor {
     type Compressed;

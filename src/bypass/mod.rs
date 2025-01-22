@@ -5,11 +5,12 @@ use crate::Compressor;
 #[cfg(test)]
 mod test;
 
-pub struct BypassCompressor{}
+#[derive(Debug, Default)]
+pub struct BypassCompressor {}
 
 impl BypassCompressor {
     pub fn new() -> Self {
-        Self {  }
+        Self::default()
     }
 }
 

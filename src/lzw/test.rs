@@ -6,18 +6,23 @@ mod tests {
     #[test]
     fn test1() {
         let mut lzw: LZWCompressor = LZWCompressor::new();
-        let compressed: Result<Vec<u16>, String> = lzw.compress(Vec::from("TOBEORNOTTOBEORTOBEORNOT".as_bytes()));
+        let compressed: Result<Vec<u16>, String> =
+            lzw.compress(Vec::from("TOBEORNOTTOBEORTOBEORNOT".as_bytes()));
         assert!(compressed.is_ok());
         let compressed: Vec<u16> = compressed.unwrap();
         let decompressed: Result<Vec<u8>, String> = lzw.decompress(compressed);
         assert!(decompressed.is_ok());
-        assert_eq!(decompressed.unwrap(), Vec::from("TOBEORNOTTOBEORTOBEORNOT".as_bytes()));
+        assert_eq!(
+            decompressed.unwrap(),
+            Vec::from("TOBEORNOTTOBEORTOBEORNOT".as_bytes())
+        );
     }
 
     #[test]
     fn test2() {
         let mut lzw: LZWCompressor = LZWCompressor::new();
-        let compressed: Result<Vec<u16>, String> = lzw.compress(Vec::from("S".repeat(255).as_bytes()));
+        let compressed: Result<Vec<u16>, String> =
+            lzw.compress(Vec::from("S".repeat(255).as_bytes()));
         assert!(compressed.is_ok());
         let compressed: Vec<u16> = compressed.unwrap();
         let decompressed: Result<Vec<u8>, String> = lzw.decompress(compressed);
