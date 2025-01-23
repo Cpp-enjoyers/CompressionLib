@@ -11,6 +11,7 @@ mod test;
 pub struct LZWCompressor {}
 
 impl LZWCompressor {
+    #[inline]
     pub fn new() -> Self {
         Self::default()
     }
