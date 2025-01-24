@@ -1,15 +1,15 @@
-#![allow(dead_code)]
-
 use crate::Compressor;
 
 #[cfg(test)]
 mod test;
 
+#[allow(clippy::module_name_repetitions)]
 #[derive(Debug, Default)]
 pub struct BypassCompressor {}
 
 impl BypassCompressor {
     #[inline]
+    #[must_use]
     pub fn new() -> Self {
         Self::default()
     }

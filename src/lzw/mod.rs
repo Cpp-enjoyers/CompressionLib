@@ -1,5 +1,3 @@
-#![allow(dead_code)]
-
 use crate::Compressor;
 use std::cmp::Ordering;
 use std::collections::HashMap;
@@ -12,6 +10,7 @@ pub struct LZWCompressor {}
 
 impl LZWCompressor {
     #[inline]
+    #[must_use]
     pub fn new() -> Self {
         Self::default()
     }
@@ -22,7 +21,7 @@ impl Compressor for LZWCompressor {
 
     fn compress(&mut self, data: Vec<u8>) -> Result<Self::Compressed, String> {
         let reset = || -> HashMap<(u16, u8), u16> {
-            (0u8..=255).map(|i: u8| ((u16::MAX, i), i as u16)).collect()
+            (0u8..=255).map(|i: u8| ((u16::MAX, i), u16::from(i))).collect()
         };
 
         let mut dict: HashMap<(u16, u8), u16> = reset();
@@ -34,12 +33,13 @@ impl Compressor for LZWCompressor {
                 dict = reset();
             }
 
-            if !dict.contains_key(&(i, byte)) {
-                dict.insert((i, byte), dict.len() as u16);
+            if dict.contains_key(&(i, byte)) {
+                i = dict[&(i, byte)];
+            } else {
+                // intentional unwrap as it this is guaranteed by the library
+                dict.insert((i, byte), u16::try_from(dict.len()).unwrap());
                 out.push(i);
                 i = dict[&(u16::MAX, byte)];
-            } else {
-                i = dict[&(i, byte)];
             }
         }
 
@@ -77,7 +77,8 @@ impl Compressor for LZWCompressor {
                 dict = reset();
             }
 
-            match j.cmp(&(dict.len() as u16)) {
+            // intentional unwrap as it this is guaranteed byt the library
+            match j.cmp(&(u16::try_from(dict.len()).unwrap())) {
                 Ordering::Greater => return Err("invalid compressed code".to_string()),
                 Ordering::Equal => {
                     // Intentional unwrap
