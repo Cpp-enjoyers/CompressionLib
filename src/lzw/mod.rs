@@ -21,7 +21,9 @@ impl Compressor for LZWCompressor {
 
     fn compress(&mut self, data: Vec<u8>) -> Result<Self::Compressed, String> {
         let reset = || -> HashMap<(u16, u8), u16> {
-            (0u8..=255).map(|i: u8| ((u16::MAX, i), u16::from(i))).collect()
+            (0u8..=255)
+                .map(|i: u8| ((u16::MAX, i), u16::from(i)))
+                .collect()
         };
 
         let mut dict: HashMap<(u16, u8), u16> = reset();

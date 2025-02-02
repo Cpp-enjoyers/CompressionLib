@@ -1,8 +1,13 @@
 #![allow(dead_code)]
+#![forbid(unsafe_code)]
 #![warn(clippy::pedantic)]
+// #![deny(missing_docs)]
 
 pub mod bypass;
+pub mod huffman;
 pub mod lzw;
+#[cfg(test)]
+mod test_utils;
 
 pub trait Compressor {
     type Compressed;
