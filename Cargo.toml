@@ -5,4 +5,5 @@ edition = "2021"
 
 [dependencies]
 itertools = "0.14.0"
-bit-vec = "0.8.0"
+bit-vec = { version = "0.8", features = ["serde"] }
+serde = "1.0"
