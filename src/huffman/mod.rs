@@ -49,7 +49,7 @@ pub struct HuffmanCompressor {}
 impl HuffmanCompressor {
     #[inline]
     #[must_use]
-    fn new() -> Self {
+    pub fn new() -> Self {
         Self::default()
     }
 }
