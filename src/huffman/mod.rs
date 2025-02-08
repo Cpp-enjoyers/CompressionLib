@@ -52,7 +52,7 @@ impl HuffmanNode {
 pub struct HuffmanCompressor {}
 
 impl HuffmanCompressor {
-    /// Creates a new [HuffmanCompressor]
+    /// Creates a new [`HuffmanCompressor`]
     #[inline]
     #[must_use]
     pub fn new() -> Self {

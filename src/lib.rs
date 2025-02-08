@@ -1,5 +1,5 @@
 /*!
- * `CppEnjoyers` compression library used by WebClient and WebServer to compress
+ * `CppEnjoyers` compression library used by `WebClient` and `WebServer` to compress
  * the packets sent on the network. The library exposes the trait [`Compressor`]
  * that offers a generic minimal API for compression so a user can implement their
  * own compression algorithms and easily intergate it with this library

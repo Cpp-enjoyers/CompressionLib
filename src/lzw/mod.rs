@@ -11,7 +11,7 @@ mod test;
 pub struct LZWCompressor {}
 
 impl LZWCompressor {
-    /// creates a new [LZWCompressor]
+    /// creates a new [`LZWCompressor`]
     #[inline]
     #[must_use]
     pub fn new() -> Self {

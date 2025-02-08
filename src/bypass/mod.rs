@@ -9,7 +9,7 @@ mod test;
 pub struct BypassCompressor {}
 
 impl BypassCompressor {
-    /// creates a new [BypassCompressor]
+    /// creates a new [`BypassCompressor`]
     #[inline]
     #[must_use]
     pub fn new() -> Self {
