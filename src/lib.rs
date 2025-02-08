@@ -12,12 +12,14 @@
  *
  * # Example usage
  * ```
+ * # use compression::LZWCompressor;
+ * # use crate::compression::Compressor;
  * # fn main() {
  * let data: Vec<u8> = vec![1, 2, 3, 4, 5];
- * let compressor: LZWCompressor = LZWCompressor::new();
- * let compressed = compressor.compress(data);
+ * let mut compressor: LZWCompressor = LZWCompressor::new();
+ * let compressed = compressor.compress(data.clone());
  * assert!(compressed.is_ok());
- * assert!(data == compressor.decompress(compressed.unwrap()))
+ * assert!(data == compressor.decompress(compressed.unwrap()).unwrap())
  * # }
  * ```
  */
