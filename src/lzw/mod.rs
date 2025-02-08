@@ -2,13 +2,16 @@ use crate::Compressor;
 use std::cmp::Ordering;
 use std::collections::HashMap;
 
+/// testing module
 #[cfg(test)]
 mod test;
 
+/// LZW compression object
 #[derive(Debug, Default)]
 pub struct LZWCompressor {}
 
 impl LZWCompressor {
+    /// creates a new [LZWCompressor]
     #[inline]
     #[must_use]
     pub fn new() -> Self {
@@ -17,6 +20,7 @@ impl LZWCompressor {
 }
 
 impl Compressor for LZWCompressor {
+    /// fixed at 16 bits encoding, can use multiple dictionaries
     type Compressed = Vec<u16>;
 
     fn compress(&mut self, data: Vec<u8>) -> Result<Self::Compressed, String> {

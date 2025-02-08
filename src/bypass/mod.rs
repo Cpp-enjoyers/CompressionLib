@@ -3,11 +3,13 @@ use crate::Compressor;
 #[cfg(test)]
 mod test;
 
+/// bypass compression object
 #[allow(clippy::module_name_repetitions)]
 #[derive(Debug, Default)]
 pub struct BypassCompressor {}
 
 impl BypassCompressor {
+    /// creates a new [BypassCompressor]
     #[inline]
     #[must_use]
     pub fn new() -> Self {

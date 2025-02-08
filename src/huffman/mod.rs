@@ -5,9 +5,11 @@ use itertools::Itertools;
 
 use crate::Compressor;
 
+/// testing module
 #[cfg(test)]
 mod test;
 
+/// represents a node in the Huffman tree
 #[allow(clippy::module_name_repetitions)]
 #[derive(Debug, Eq, Ord, PartialEq, PartialOrd)]
 struct HuffmanNode {
@@ -18,6 +20,7 @@ struct HuffmanNode {
 }
 
 impl HuffmanNode {
+    /// creates a new node with no childrens
     fn new(freq: usize, c: Option<u8>) -> Self {
         Self {
             freq,
@@ -27,6 +30,7 @@ impl HuffmanNode {
         }
     }
 
+    /// creates a new node with the specified childrens
     fn new_with_children(
         freq: usize,
         c: Option<u8>,
@@ -42,11 +46,13 @@ impl HuffmanNode {
     }
 }
 
+/// Huffman compression object
 #[allow(clippy::module_name_repetitions)]
 #[derive(Debug, Default)]
 pub struct HuffmanCompressor {}
 
 impl HuffmanCompressor {
+    /// Creates a new [HuffmanCompressor]
     #[inline]
     #[must_use]
     pub fn new() -> Self {
@@ -55,6 +61,7 @@ impl HuffmanCompressor {
 }
 
 impl Compressor for HuffmanCompressor {
+    /// compressed data (variable bit lenght) + dictionary
     type Compressed = (BitVec, HashMap<u8, BitVec>);
 
     fn compress(&mut self, data: Vec<u8>) -> Result<Self::Compressed, String> {
