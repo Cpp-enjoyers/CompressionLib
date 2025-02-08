@@ -18,5 +18,8 @@
       let mut compressor: LZWCompressor = LZWCompressor::new();
       let compressed = compressor.compress(data.clone());
       assert!(compressed.is_ok());
-      assert!(data == compressor.decompress(compressed.unwrap()).unwrap())
+      let compressed = compressed.unwrap();
+      let decompressed = compressor.decompress(compressed);
+      assert!(decompressed.is_ok());
+      assert!(data == decompressed.unwrap());
   }
