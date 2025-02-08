@@ -10,13 +10,13 @@
        it is used to logically represent that no compression happens
  
   # Example usage
-  ```
-  # use compression::LZWCompressor;
-  # use crate::compression::Compressor;
-  # fn main() {
-  let data: Vec<u8> = vec!1, 2, 3, 4, 5;
-  let mut compressor: LZWCompressor = LZWCompressor::new();
-  let compressed = compressor.compress(data.clone());
-  assert!(compressed.is_ok());
-  assert!(data == compressor.decompress(compressed.unwrap()).unwrap())
-  # }
+  ``` rust
+  use compression::LZWCompressor;
+  use crate::compression::Compressor;
+  fn main() {
+      let data: Vec<u8> = vec!1, 2, 3, 4, 5;
+      let mut compressor: LZWCompressor = LZWCompressor::new();
+      let compressed = compressor.compress(data.clone());
+      assert!(compressed.is_ok());
+      assert!(data == compressor.decompress(compressed.unwrap()).unwrap())
+  }
